@@ -25,6 +25,9 @@ class CoController extends CommunecterController {
 
 	public function actionIndex() 
 	{
+
+      	CO2Stat::incNbLoad("co2-annonces");
+    
     	if(Yii::app()->request->isAjaxRequest)
 	        echo $this->renderPartial("../default/index");
 	    else
