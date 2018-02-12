@@ -26,6 +26,7 @@ typeObj.classified = { col:"classified",ctrl:"classified", titleClass : "bg-azur
                        "Technology","Property","Vehicles","Home","Leisure","Fashion"
                        ]    
 };
+typeObj.classifieds = { sameAs:"classified"};
 
 //CO LANG
 co.shop = {
