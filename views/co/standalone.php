@@ -109,32 +109,32 @@
 					</h4>
 				<?php } ?>
 			</div>
-			<div id="myCarousel" class="col-md-12 no-padding carousel carousel-media slide" data-ride="carousel">
-				  <!-- Indicators -->
-				  <ol class="carousel-indicators pull-left">
 
-				    <?php //var_dump(@$element["gallery"]);
-				  		if(@$element["gallery"]) { $i=0;
-				  		foreach($element["gallery"] as $k => $img){ $i++; ?>
-							<li data-target="#myCarousel" data-slide-to="<?php echo $i-1; ?>" 
-								class="pull-left <?php if($i==1) echo "active"; ?>">
-						    	<img src="<?php echo $img["path"]; ?>" alt="img">
-						    </li>
-				  <?php }} ?>
+			<?php if(@$element["gallery"]) { $i=0; ?>
+				<div id="myCarousel" class="col-md-12 no-padding carousel carousel-media slide" data-ride="carousel">
+					  <!-- Indicators -->
+					  <ol class="carousel-indicators pull-left">
 
-				  </ol>
+					    <?php foreach($element["gallery"] as $k => $img){ $i++; ?>
+								<li data-target="#myCarousel" data-slide-to="<?php echo $i-1; ?>" 
+									class="pull-left <?php if($i==1) echo "active"; ?>">
+							    	<img src="<?php echo $img["path"]; ?>" alt="img">
+							    </li>
+					  	<?php } ?>
 
-				  <!-- Wrapper for slides -->
-				  <div class="carousel-inner">
-				  <?php //var_dump(@$element["gallery"]);
-				  		if(@$element["gallery"]) { $i=0;
-				  		foreach($element["gallery"] as $k => $img){ $i++; ?>
-						    <div class="item <?php if($i==1) echo "active"; ?>">
-						      <img src="<?php echo $img["path"]; ?>" alt="img">
-						    </div>
-				  <?php }} ?>
-				  </div>
-			</div>
+					  </ol>
+
+					  <!-- Wrapper for slides -->
+					  <div class="carousel-inner">
+					  <?php foreach($element["gallery"] as $k => $img){ $i++; ?>
+							    <div class="item <?php if($i==1) echo "active"; ?>">
+							      <img src="<?php echo $img["path"]; ?>" alt="img">
+							    </div>
+					  <?php } ?>
+					  </div>
+				</div>
+			<?php } ?>
+
 
 
 			<div class="col-md-12 margin-bottom-20 no-padding">
@@ -196,10 +196,11 @@
 <script type="text/javascript">
 
 	var element= <?php echo json_encode($element); ?>;
+	var type = "<?php echo $type; ?>";
 	console.log("thisClassified", element);
 	
 	jQuery(document).ready(function() {	
-		var nav = directory.findNextPrev("#page.type.classified.id."+element['_id']['$id']);
+		var nav = directory.findNextPrev("#page.type."+type+".id."+element['_id']['$id']);
 
 		initKInterface({"affixTop":0});
         //if(typeof params.name != "undefined" && params.name != "")
