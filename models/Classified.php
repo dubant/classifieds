@@ -75,8 +75,10 @@ class Classified {
 	 * @return poi
 	 */
 	public static function getById($id) { 
-	  	$poi = PHDB::findOneById( self::COLLECTION ,$id );
-	  	return $poi;
+	  	$classified = PHDB::findOneById( self::COLLECTION ,$id );
+	  	//$classified["parent"] = Element::getElementByTypeAndId()
+	  	$classified["gallery"] = Document::listMyDocumentByIdAndType(@$id, "classified");
+	  	return $classified;
 	}
 
 

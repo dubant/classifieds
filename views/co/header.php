@@ -11,7 +11,7 @@ foreach ($classified["sections"] as $key => $section)
             data-type-anc="<?php echo @$section["label"]; ?>" data-key="<?php echo @$section["key"]; ?>" 
             data-type="classified"
             style="border-radius:0px; border-color: transparent; text-transform: uppercase;">
-      <i class="fa fa-<?php echo $section["icon"]; ?> fa-2x hidden-xs"></i><br><?php echo Yii::t("category",$section["label"]); ?>
+      <i class="fa fa-<?php echo $section["icon"]; ?> fa-2x hidden-xs"></i><br><?php echo Yii::t("category",$section["labelFront"]); ?>
     </button>
   </div>
 
