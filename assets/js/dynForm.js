@@ -1,6 +1,6 @@
 dynForm = {
     jsonSchema : {
-	    title : tradDynForm["addclassified"],
+	    title : tradDynForm.addclassified,
 	    icon : "bullhorn",
 	    type : "object",	    
 	    onLoads : {
@@ -144,7 +144,7 @@ dynForm = {
                 html:"",
             },
             sectionBtn :{
-                label : tradDynForm["whichkindofclassified"]+" ? ",
+                label : tradDynForm.whichkindofclassified+" ? ",
 	            inputType : "tagList",
                 placeholder : "Choisir un type",
                 list : modules.classifieds.categories.sections,
@@ -159,7 +159,7 @@ dynForm = {
 						//$(".sectionBtn:not(.active)").hide();
 						var sectionKey = $(this).data('key');
 						//alert(sectionKey);
-						var what = { title : tradDynForm["inwhichcategoryforclassified"]+" ?", 
+						var what = { title : tradDynForm.inwhichcategoryforclassified+" ?", 
 				                         icon : modules.classifieds.categories.sections[sectionKey].icon }
 						if( jsonHelper.notNull( "modules.classifieds.categories.sections."+sectionKey+".filters" ) ){
 				            //alert('build btns menu'+modules.classifieds.categories.sections[sectionKey].filters);
@@ -181,7 +181,7 @@ dynForm = {
             },
             section : dyFInputs.inputHidden(),
 	        typeBtn :{
-                label : tradDynForm["inwhichcategoryforclassified"]+" ? ",
+                label : tradDynForm.inwhichcategoryforclassified+" ? ",
 	            inputType : "tagList",
                 placeholder : "Choisir une catégorie",
                 list : modules.classifieds.categories.filters,

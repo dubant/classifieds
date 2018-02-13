@@ -65,6 +65,12 @@ class Classified {
 			"init"   => Yii::app()->getModule( self::MODULE )->assetsUrl."/js/init.js" ,
 			"form"   => Yii::app()->getModule( self::MODULE )->assetsUrl."/js/dynForm.js" ,
             "categories" => CO2::getModuleContextList(self::MODULE,"categories"),
+            "deviseTheme" 	=> array("€" => "€",
+					    			 "Ğ1" => "Ğ1",
+					                 "£" => "£",
+					                 "$" => "$",
+					                 "CFP" => "CFP"),
+    		"deviseDefault" => "€"
 		);
 	}
 
