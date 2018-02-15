@@ -70,7 +70,8 @@ class Classified {
 					                 "£" => "£",
 					                 "$" => "$",
 					                 "CFP" => "CFP"),
-    		"deviseDefault" => "€"
+    		"deviseDefault" => "€",
+    		"lbhp" => true
 		);
 	}
 

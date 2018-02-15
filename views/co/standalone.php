@@ -236,7 +236,7 @@
 	  				$hasRC = (@$element["hasRC"] || $element["parent"]["type"] == Person::COLLECTION ) ? "true" : "false";
 	  				$canEdit = ( @$openEdition && $openEdition ) ? "true" : "false";
 	  				//Authorisation::canEditItem(Yii::app()->session['userId'], $element["parent"]["type"], $id) );
-	  				if($element["parent"]["type"] == Person::COLLECTION)
+	  				if($element["parent"]["type"] == Person::COLLECTION && @$element["username"])
 	  				{
 	  				 	$loadChat = (string)$element["username"];
 	  					if( (string)$element["_id"] == @Yii::app()->session["userId"] )
