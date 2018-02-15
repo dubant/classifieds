@@ -248,6 +248,13 @@
 
 			//TODO : when not member
 			//what do we do with a ressource of a non openEdition
+			<?php 
+			/*
+			
+			rcObj.loadChat('<?php echo $loadChat;?>','<?php echo $type?>',<?php echo $canEdit;?>,<?php echo $hasRC;?> )
+			
+			*/ 
+			?>
 			
 		});
 		
