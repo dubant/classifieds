@@ -151,10 +151,15 @@
 			<!-- TODO TIB : open rocket-chat with user @$element["parent"] 
 				 in => $("#btn-private-contact").click(function(){
 			-->
-			<button class="btn btn-link bg-azure margin-bottom-15" id="btn-private-contact">
+			<?php if(@Yii::app()->session["userId"] && Yii::app()->params['rocketchatEnabled'] )
+	  			{
+	  				$creator = Person::getById($element["creator"]);
+		  		
+	  	  ?>
+			<button class="btn btn-link bg-azure margin-bottom-15" id="btn-private-contact" data-name-el="<?php echo $creator['name']; ?>" data-username="<?php echo $creator['username']; ?>" data-id="<?php echo $element['creator']; ?>" >
 				<i class="fa fa-comments"></i> <?php echo Yii::t("classified", "Send a private message to the advertiser");  ?>
 			</button>
-
+		<?php } ?>
 
 				<?php if(@$element["parent"]["preferences"]["publicFields"]["email"]==true &&
 						 @$element["parent"]["email"]!=""){ ?>
@@ -217,44 +222,21 @@
 					
 		},"html");
 
-	    <?php if(@Yii::app()->session["userId"] && Yii::app()->params['rocketchatEnabled'] )
-	  		if( ($element["parent"]["type"]!=Person::COLLECTION && ((@$edit && $edit) || (@$openEdition && $openEdition)) ) || 
-	  			($element["parent"]["type"]==Person::COLLECTION) ||
-	  			//admins can create rooms
-	  			( Authorisation::canEditItem(Yii::app()->session['userId'], $element["parent"]["type"], $id) ) ||
-	  			//simple members can join only when admins had created
-	  			( @$element["hasRC"] && Link::isLinked((string)$element["_id"],$element["parent"]["type"],Yii::app()->session["userId"]))  )
-	  			{
-	  				if(@$element["slug"])
-						//todo : elements members of
-	  					$loadChat = $element["slug"];
-	  				else
-	  					$createSlugBeforeChat=true;
-	  				//todo : elements members of
-	  				$loadChat = $element["name"];
-	  				//people have pregenerated rooms so allways available 
-	  				$hasRC = (@$element["hasRC"] || $element["parent"]["type"] == Person::COLLECTION ) ? "true" : "false";
-	  				$canEdit = ( @$openEdition && $openEdition ) ? "true" : "false";
-	  				//Authorisation::canEditItem(Yii::app()->session['userId'], $element["parent"]["type"], $id) );
-	  				if($element["parent"]["type"] == Person::COLLECTION && @$element["username"])
-	  				{
-	  				 	$loadChat = (string)$element["username"];
-	  					if( (string)$element["_id"] == @Yii::app()->session["userId"] )
-	  						$loadChat = "";
-		  			}
-		  		}
-	  	  ?>
+	    
 		$("#btn-private-contact").click(function(){
 
-			//TODO : when not member
-			//what do we do with a ressource of a non openEdition
-			<?php 
-			/*
-			
-			rcObj.loadChat('<?php echo $loadChat;?>','<?php echo $type?>',<?php echo $canEdit;?>,<?php echo $hasRC;?> )
-			
-			*/ 
-			?>
+	    	var nameElo = $(this).data("name-el");
+	    	var idEl = $(this).data("id");
+	    	var usernameEl = $(this).data("username");
+	    	//alert(nameElo  +" | "+idEl +" | "+usernameEl);
+	    	var ctxData = {
+	    		name 	 : nameElo,
+	    		type  	 : "citoyens",
+	    		username : usernameEl,
+	    		id 		 : idEl
+	    	};
+	    	
+	    	rcObj.loadChat(nameElo ,"citoyens" ,true ,true, ctxData );
 			
 		});
 		
