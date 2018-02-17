@@ -68,43 +68,53 @@
 	.portfolio-modal .modal-content{
 		text-align: left;
 	}
+
+
+	#modal-preview-coop{
+		overflow: auto;
+	}
+
 </style>
 
-<?php 	/*$layoutPath = 'webroot.themes.'.Yii::app()->theme->name.'.views.layouts.';
-		$this->renderPartial($layoutPath.'header', 
-		        array(  "layoutPath"=>$layoutPath , 
-		                "page" => "page") ); */
-
-		//echo $element["_id"]. $type;
-		// $cssAnsScriptFilesModule = array('/css/classified.css');
-		// HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule, $this->module->getAssetsUrl());
-		// echo $this->module->assetsUrl;
+<?php 	//$layoutPath = 'webroot.themes.'.Yii::app()->theme->name.'.views.layouts.';
 ?>
 
 <div class="classifiedStandalone">
 	<div class="headerTitleStanalone col-xs-12 hidden"></div>
 
-	<div class="col-xs-12 col-lg-11 col-lg-offset-1">
+	<div class="col-xs-12 col-lg-12">
+
 		<div class="col-xs-12 margin-top-50">
 			<?php if(@$element["parent"]["name"]){ ?>
-			<span class="letter-azure font-montserrat">
-				<i class="fa fa-angle-down"></i> <i class="fa fa-bullhorn"></i> 
-				<?php echo Yii::t("classified", "classified published by");  ?> 
-				<a href="#page.type.<?php echo @$element["parent"]["type"]; ?>.id.<?php echo @$element["parent"]["_id"]; ?>" 
-					class="lbh">
-					<?php echo @$element["parent"]["name"]; ?>
-				</a>
-			</span>
+				<span class="letter-azure font-montserrat">
+					<i class="fa fa-angle-down"></i> <i class="fa fa-bullhorn"></i> 
+					<?php echo Yii::t("classified", @$type." published by");  ?> 
+					<a href="#page.type.<?php echo @$element["parent"]["type"]; ?>.id.<?php echo @$element["parent"]["_id"]; ?>" 
+						class="lbh">
+						<?php echo @$element["parent"]["name"]; ?>
+					</a>
+				</span>
 			<?php } ?>
+			<button class="btn btn-default pull-right btn-close-preview" style="margin-top:-15px;">
+					<i class="fa fa-times"></i>
+			</button>
+			<br>
+			<a href="#page.type.<?php echo @$type; ?>.id.<?php echo (string)@$element["_id"]; ?>" 
+				class="letter-green lbh">
+				#page.type.<?php echo @$type; ?>.id.<?php echo (string)@$element["_id"]; ?>
+			</a>
+
 			<?php if(@$element["type"]){ ?>
-			<hr class="hr10">
-			<small>
-				<?php echo Yii::t("category", @$element["type"]); ?> > 
-				<?php echo Yii::t("category", @$element["subtype"]); ?>
-			</small>
+				<hr class="hr10">
+				<small>
+					<?php echo Yii::t("category", @$element["type"]); ?> > 
+					<?php echo Yii::t("category", @$element["subtype"]); ?>
+				</small>
 			<?php } ?>
+
 		</div>
-		<div class="col-md-6 col-sm-7 col-xs-12 contentOnePage">
+
+		<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 contentOnePage">
 			<div class="col-md-12 no-padding title text-left margin-top-15">
 				<h4 class="pull-left"><?php echo ucfirst($element["name"]) ?></h4>
 				<?php if(@$element["price"] && @$element["devise"]){ ?>
@@ -150,7 +160,7 @@
 			</div>
 		</div>
 
-		<div class="col-md-5 col-sm-5 col-xs-12 padding-25 margin-top-15">
+		<div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 padding-25 margin-top-15">
 			<!-- <hr class="col-xs-12 no-padding"> -->
 			<!-- TODO TIB : open rocket-chat with user @$element["parent"] 
 				 in => $("#btn-private-contact").click(function(){
@@ -211,13 +221,22 @@
 	jQuery(document).ready(function() {	
 		var nav = directory.findNextPrev("#page.type."+type+".id."+element['_id']['$id']);
 
-		initKInterface({"affixTop":0});
-       
+		//if(typeof params.name != "undefined" && params.name != "")
+        str =  "<div class='col-md-6 no-padding'>"+ 
+			        nav.prev+
+			        "<span>"+element.name+"</span>"+
+			        nav.next+
+			    "</div>";
+
+	    $(".headerTitleStanalone").html(str);
+
 	    initBtnLink();
 
 	    getAjax("#commentElement",baseUrl+"/"+moduleId+"/comment/index/type/classified/id/"+element['_id']['$id'],
-				function(){},"html");
+				function(){  			
+		},"html");
 
+	    
 		$("#btn-private-contact").click(function(){
 
 	    	var nameElo = $(this).data("name-el");
@@ -232,13 +251,17 @@
 	    	};
 	    	
 	    	rcObj.loadChat(nameElo ,"citoyens" ,true ,true, ctxData );
+			
+		});
+
+		$("#modal-preview-coop .btn-close-preview").click(function(){
+			console.log("close preview");
+			$("#modal-preview-coop").hide(300);
+			$("#modal-preview-coop").html("");
 		});
 		
-		setTitle("", "", element.name);
-
 		element["id"] = element['_id']['$id'];
-
-		$("#modal-preview-coop").hide(300);
-		$("#modal-preview-coop").html("");
+		//var html = directory.preview(classified);
+	  	//$("#classified").html(html);
 	});
 </script>
