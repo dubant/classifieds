@@ -6,10 +6,12 @@
 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-8 margin-top-15 text-right subsub classifiedFilters" id="sub-menu-left">
   <!-- <h4 class="text-dark padding-bottom-5"><i class="fa fa-angle-down"></i> Catégories</h4>
   <hr> -->
-  <h4 class="margin-top-25 padding-bottom-10 letter-azure label-category" id="title-sub-menu-category">
+  <!--<h4 class="margin-top-25 padding-bottom-10 letter-azure label-category" id="title-sub-menu-category">
     <i class="fa fa-search"></i>
   </h4>
-  <hr>
+  <hr>-->
+  <button class="open-type-filter tooltips" data-toggle="tooltip" data-placement="right" data-title="<?php echo Yii::t("common","Open filtering by type") ?>"><i class="fa fa-chevron-right"></i></button>
+            
   <?php 
       foreach ($categories['filters'] as $key => $cat) {
   ?>
