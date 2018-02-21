@@ -21,7 +21,6 @@
         </button><br>
         <?php foreach (@$cat["subcat"] as $key2 => $cat2) { 
           $lbl2 = (isset($cat2["label"])) ? $cat2["label"] : $cat2 ;
-          
           ?>
           <button class="btn btn-default text-azure margin-bottom-5 margin-left-15 hidden keycat keycat-<?php echo $key; ?>" data-categ="<?php echo $key; ?>" data-keycat="<?php echo $lbl2; ?>">
             <i class="fa fa-angle-right"></i> <?php echo Yii::t("category",$lbl2); ?>
