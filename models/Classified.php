@@ -4,6 +4,7 @@ class Classified {
 	const COLLECTION = "classified";
 	const CONTROLLER = "classified";
 	const MODULE = "classifieds";
+	const ICON = "fa-bullhorn";
 	
 	//TODO Translate
 	public static $classifiedTypes = array(
