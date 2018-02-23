@@ -3,7 +3,7 @@
     
   </div>
 
-<div class="col-lg-2 col-md-2 col-sm-3 col-xs-8 margin-top-15 text-right subsub classifiedFilters" id="sub-menu-left">
+<div class="col-lg-2 col-md-2 col-sm-3 col-xs-8 margin-top-15 text-right subsub classifiedFilters font-montserrat" id="sub-menu-left">
   <!-- <h4 class="text-dark padding-bottom-5"><i class="fa fa-angle-down"></i> Catégories</h4>
   <hr> -->
   <!--<h4 class="margin-top-25 padding-bottom-10 letter-azure label-category" id="title-sub-menu-category">
