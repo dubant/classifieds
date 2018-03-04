@@ -14,7 +14,7 @@ dynForm = {
 	    		
 	    		if(data && data.section && data.type && data.subtype ){
 	    			$("#ajaxFormModal #id").val(data.id);
-	    			$(".breadcrumbcustom").html( "<h4><a href='javascript:;'' class='btn btn-xs btn-danger'  onclick='dyFObj.elementObj.dynForm.jsonSchema.actions.clear()'><i class='fa fa-times'></i></a> "+data.section+" > "+data.type+" > "+data.subtype+"</h4>" );
+	    			$(".breadcrumbcustom").html( "<h4><a href='javascript:;'' class='btn btn-xs btn-danger'  onclick='dyFObj.elementObj.dynForm.jsonSchema.actions.clear()'><i class='fa fa-times'></i></a> "+tradCategory[data.section]+" > "+tradCategory[data.type]+" > "+tradCategory[data.subtype]+"</h4>" );
 					$(".sectionBtntagList").hide();
 					$(".typeBtntagList").hide();
 	    		} else
@@ -99,7 +99,7 @@ dynForm = {
             		{
 	            		$.each(filt[ $(this).data('key') ]["subcat"], function(k,v) { 
 	            			fieldHTML += '<div class="col-md-6 padding-5">'+
-	    									'<a class="btn tagListEl subtypeBtn '+tradCategory[k]+'Btn " data-tag="'+tradCategory[v]+'"  data-key="'+v+'" href="javascript:;">'+tradCategory[v]+'</a>' +
+	    									'<a class="btn tagListEl subtypeBtn '+k+'Btn " data-tag="'+v.key+'"  data-lbl="'+tradCategory[v.key]+'" href="javascript:;">'+tradCategory[v.key]+'</a>' +
 	            						"</div>";
 	            		});
 	            		$(".subtypeSection").html('<hr class="col-md-12 no-padding">'+
