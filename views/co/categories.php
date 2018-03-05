@@ -113,6 +113,9 @@
     <span class="text-red"><i class="fa fa-star hidden-xs"></i> <?php echo Yii::t("common","MY FAVORITES") ?></span>
   </button>
   <?php } ?>
+  <!-- <button onclick="dyFObj.openForm('classifieds');" class="col-md-2 col-sm-4 col-xs-6 no-padding text-azure btn btn-default margin-top-5">
+    <i class="fa fa-plus-circle hidden-xs fa-2x "></i> 
+  </button> -->
 </div>
 <div class="col-md-10 col-sm-9 col-xs-12 text-left headerSearchContainer no-padding  pull-right"></div>
   <!-- <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12 text-center subsub" id="menu-section-classified">

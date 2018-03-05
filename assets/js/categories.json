@@ -2,7 +2,7 @@
     "sections" : {
         "forsale"   : { "label":"Sale", "labelFront":"For sale", "key" : "forsale", "icon" : "money", "section":3, "color":"azure"},
         "forrent"   : { "label":"Rent", "labelFront":"For rent", "key" : "forrent", "icon" : "external-link", "section":3, "color":"azure"},
-        "job"       : { "label":"Jobs", "labelFront":"Offers", "key" : "job", "icon" : "briefcase", "section":5,  "color":"azure", "filters" : "jobFilters" },
+        "job"       : { "label":"Jobs", "labelFront":"Jobs", "key" : "job", "icon" : "briefcase", "section":5,  "color":"azure", "filters" : "jobFilters" },
         "donation"  : { "label":"Give", "labelFront":"To give", "key" : "donation", "icon" : "gift","section":2, "color":"azure"}
     },
     "filters" : {
