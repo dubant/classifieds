@@ -95,9 +95,22 @@
 					</a>
 				</span>
 			<?php } ?>
+			
 			<button class="btn btn-default pull-right btn-close-preview" style="margin-top:-15px;">
 					<i class="fa fa-times"></i>
 			</button>
+			
+			<?php if( $element["creator"] == Yii::app()->session["userId"] || Authorisation::canEditItem( Yii::app()->session["userId"], "poi", $id, $element["parentType"], $element["parentId"] ) ){?>
+			
+			<button class="btn btn-default pull-right text-red deleteThisBtn" data-type="classified" data-id="<?php echo $id ?>" style="margin-top:-15px;">
+				<i class=" fa fa-trash"></i>
+			</button>
+
+			<button class="btn btn-default pull-right btn-edit-preview" style="margin-top:-15px;">
+				<i class="fa fa-pencil"></i>
+			</button>
+			<?php } ?>
+
 			<br>
 			<a href="#page.type.<?php echo @$type; ?>.id.<?php echo (string)@$element["_id"]; ?>" 
 				class="letter-green lbh">
@@ -254,10 +267,16 @@
 			
 		});
 
-		$("#modal-preview-coop .btn-close-preview").click(function(){
+		$("#modal-preview-coop .btn-close-preview, .deleteThisBtn").click(function(){
 			console.log("close preview");
 			$("#modal-preview-coop").hide(300);
 			$("#modal-preview-coop").html("");
+		});
+
+		$(".btn-edit-preview").click(function(){
+			$("#modal-preview-coop").hide(300);
+			$("#modal-preview-coop").html("");
+			dyFObj.editElement('classifieds', '<?php echo $id ?>' );
 		});
 		
 		element["id"] = element['_id']['$id'];
