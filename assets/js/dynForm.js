@@ -94,12 +94,16 @@ dynForm = {
             		//$(".typeBtn:not(.active)").hide();
             		$("#ajaxFormModal #subtype").val("");
             		fieldHTML = "";
-            		var filt = (modules.classifieds.categories.currentLeftFilters != null ) ? classified[modules.classifieds.categories.currentLeftFilters] : modules.classifieds.categories.filters; 
-            		if(filt[ $(this).data('key') ]["subcat"].length >= 1)
+            		var filt = (modules.classifieds.categories.currentLeftFilters != null ) 
+            					? classified[modules.classifieds.categories.currentLeftFilters] 
+            					: modules.classifieds.categories.filters; 
+            		if( filt[ $(this).data('key') ]["subcat"].length >= 1 )
             		{
 	            		$.each(filt[ $(this).data('key') ]["subcat"], function(k,v) { 
+	            			mylog.log(">>>> click type BTn" , k ,v, v.key,tradCategory[v.key]);
 	            			fieldHTML += '<div class="col-md-6 padding-5">'+
-	    									'<a class="btn tagListEl subtypeBtn '+k+'Btn " data-tag="'+v.key+'"  data-lbl="'+tradCategory[v.key]+'" href="javascript:;">'+tradCategory[v.key]+'</a>' +
+	            							'<a class="btn tagListEl subtypeBtn '+tradCategory[k]+'Btn " data-tag="'+tradCategory[v]+'"  data-key="'+v+'" href="javascript:;">'+tradCategory[v]+'</a>' +
+	    									//'<a class="btn tagListEl subtypeBtn '+k+'Btn " data-tag="'+v.key+'"  data-lbl="'+tradCategory[v.key]+'" href="javascript:;">'+tradCategory[v.key]+'</a>' +
 	            						"</div>";
 	            		});
 	            		$(".subtypeSection").html('<hr class="col-md-12 no-padding">'+
@@ -128,9 +132,9 @@ dynForm = {
 		            		$(".subtypeSectioncustom").hide();
 		            		dyFObj.canSubmitIf();
 						});
-	            	} else {
+	            	} else 
 	            		$(".nametext, .descriptiontextarea, .pricetext, .contactInfotext, .locationlocation, .imageuploader, .formshowerscustom, .tagstags, .deviseselect").show();
-	            	}
+	            	
             	});
 	    	}
 	    },
@@ -161,6 +165,7 @@ dynForm = {
 						//alert(sectionKey);
 						var what = { title : tradDynForm.inwhichcategoryforclassified+" ?", 
 				                         icon : modules.classifieds.categories.sections[sectionKey].icon }
+						
 						if( jsonHelper.notNull( "modules.classifieds.categories.sections."+sectionKey+".filters" ) ){
 				            //alert('build btns menu'+modules.classifieds.categories.sections[sectionKey].filters);
 				            modules.classifieds.categories.currentLeftFilters = modules.classifieds.categories.sections[sectionKey].filters;
@@ -174,6 +179,7 @@ dynForm = {
 				            dyFObj.elementObj.dynForm.jsonSchema.actions.initTypeBtn()
 				            modules.classifieds.categories.currentLeftFilters = null;
 				        }
+
 						$(".breadcrumbcustom").html( "<h4><a href='javascript:;'' class='btn btn-xs btn-danger'  onclick='dyFObj.elementObj.dynForm.jsonSchema.actions.clear()'><i class='fa fa-times'></i></a> "+$(this).data('tag')+"</h4>");
 						$(".sectionBtntagList").hide();
 	            	});
