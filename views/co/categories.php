@@ -95,13 +95,13 @@
       foreach ($categories['filters'] as $key => $cat) {
   ?>
       <?php if(is_array($cat)) { ?>
-        <button class="btn btn-default text-dark margin-bottom-5 btn-select-category-1" style="margin-left:-5px;" data-keycat="<?php echo $key; ?>">
+        <button class="btn btn-default text-dark margin-bottom-5 elipsis btn-select-category-1" style="margin-left:-5px;" data-keycat="<?php echo $key; ?>">
           <i class="fa fa-<?php echo @$cat["icon"]; ?> hidden-xs"></i> <?php echo Yii::t("category",$key); ?>
         </button><br>
         <?php foreach (@$cat["subcat"] as $key2 => $cat2) { 
           $lbl2 = (isset($cat2["label"])) ? $cat2["label"] : $cat2 ;
           ?>
-          <button class="btn btn-default text-azure margin-bottom-5 hidden keycat keycat-<?php echo $key; ?>" data-categ="<?php echo $key; ?>" data-keycat="<?php echo $lbl2; ?>">
+          <button class="btn btn-default text-azure margin-bottom-5 hidden elipsis keycat keycat-<?php echo $key; ?>" data-categ="<?php echo $key; ?>" data-keycat="<?php echo $lbl2; ?>">
             <i class="fa fa-angle-right"></i> <?php echo Yii::t("category",$lbl2); ?>
           </button><br class="hidden">
         <?php } ?>

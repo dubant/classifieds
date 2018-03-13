@@ -16,7 +16,7 @@
 	}
 	.carousel-media > ol > li.active{
 	   margin:1px;
-	   border-top: 5px solid #EF5B34 !important;
+	   border-top: 5px solid #ea4335 !important;
 	}
 	.carousel-media > ol > li{
 		width: 60px !important;
@@ -24,7 +24,7 @@
 	    border: inherit !important;
 	    height: 65px !important;
 	    border-radius: inherit;
-	    border-top: 5px solid lightgray !important;
+	    border-top: 5px solid #666F78 !important;
 	}
 	
 	.carousel-media > ol > li > img{
@@ -79,6 +79,8 @@
 		// $cssAnsScriptFilesModule = array('/css/classified.css');
 		// HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule, $this->module->getAssetsUrl());
 		// echo $this->module->assetsUrl;
+		$classSizeGeneral=(@$preview && $preview==true) ? "col-md-12 col-sm-12" : "col-md-6 col-sm-7";
+		$classSizeContact=(@$preview && $preview==true) ? "col-md-12 col-sm-12" : "col-md-6 col-sm-5";
 ?>
 
 <div class="classifiedStandalone">
@@ -104,7 +106,7 @@
 			</small>
 			<?php } ?>
 		</div>
-		<div class="col-md-6 col-sm-7 col-xs-12 contentOnePage">
+		<div class="<?php echo $classSizeGeneral; ?> col-sm-12 col-xs-12 contentOnePage">
 			<div class="col-md-12 no-padding title text-left margin-top-15">
 				<h4 class="pull-left"><?php echo ucfirst($element["name"]) ?></h4>
 				<?php if(@$element["price"] && @$element["devise"]){ ?>
@@ -150,7 +152,7 @@
 			</div>
 		</div>
 
-		<div class="col-md-5 col-sm-5 col-xs-12 padding-25 margin-top-15">
+		<div class="<?php echo $classSizeContact; ?> col-xs-12 padding-25 margin-top-15">
 			<!-- <hr class="col-xs-12 no-padding"> -->
 			<!-- TODO TIB : open rocket-chat with user @$element["parent"] 
 				 in => $("#btn-private-contact").click(function(){

@@ -16,7 +16,7 @@
 	}
 	.carousel-media > ol > li.active{
 	   margin:1px;
-	   border-top: 5px solid #EF5B34 !important;
+	   border-top: 5px solid #ea4335 !important;
 	}
 	.carousel-media > ol > li{
 		width: 60px !important;
@@ -24,7 +24,7 @@
 	    border: inherit !important;
 	    height: 65px !important;
 	    border-radius: inherit;
-	    border-top: 5px solid lightgray !important;
+	    border-top: 5px solid #666F78 !important;
 	}
 	
 	.carousel-media > ol > li > img{
@@ -33,7 +33,8 @@
 	   height:60px;
 	}
 	.carousel-media > ol{
-		bottom: -85px
+		bottom: -85px;
+		left:inherit !important;
 	}
 	.carousel-media{
 		margin-bottom: 100px;
@@ -127,7 +128,7 @@
 
 		</div>
 
-		<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 contentOnePage">
+		<div class="col-md-12 col-sm-12 col-xs-12 contentOnePage">
 			<div class="col-md-12 no-padding title text-left margin-top-15">
 				<h4 class="pull-left"><?php echo ucfirst($element["name"]) ?></h4>
 				<?php if(@$element["price"] && @$element["devise"]){ ?>
@@ -137,30 +138,15 @@
 				<?php } ?>
 			</div>
 
-			<?php if(@$element["gallery"]) { $i=0; ?>
-				<div id="myCarousel" class="col-md-12 no-padding carousel carousel-media slide" data-ride="carousel">
-					  <!-- Indicators -->
-					  <ol class="carousel-indicators pull-left">
+				<?php 
+				$images=Document::getListDocumentsWhere(array("id"=>(string)$element["_id"],"type"=>"classifieds","doctype"=>Document::DOC_TYPE_IMAGE),Document::DOC_TYPE_IMAGE);
+					$this->renderPartial('../pod/sliderMedia', 
+								array(
+									  "medias"=>@$element["medias"],
+									  "images" => @$images,
+									  ) ); 
+									  ?>
 
-					    <?php foreach($element["gallery"] as $k => $img){ $i++; ?>
-								<li data-target="#myCarousel" data-slide-to="<?php echo $i-1; ?>" 
-									class="pull-left <?php if($i==1) echo "active"; ?>">
-							    	<img src="<?php echo $img["path"]; ?>" alt="img">
-							    </li>
-					  	<?php } ?>
-
-					  </ol>
-
-					  <!-- Wrapper for slides -->
-					  <div class="carousel-inner">
-					  <?php $i=0; foreach($element["gallery"] as $k => $img){ $i++; ?>
-							    <div class="item <?php if($i==1) echo "active"; ?>">
-							      <img src="<?php echo $img["path"]; ?>" alt="img">
-							    </div>
-					  <?php } ?>
-					  </div>
-				</div>
-			<?php } ?>
 
 
 
@@ -173,7 +159,7 @@
 			</div>
 		</div>
 
-		<div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 padding-25 margin-top-15">
+		<div class="col-md-12 col-sm-12 col-xs-12 padding-25 margin-top-15">
 			<!-- <hr class="col-xs-12 no-padding"> -->
 			<!-- TODO TIB : open rocket-chat with user @$element["parent"] 
 				 in => $("#btn-private-contact").click(function(){
