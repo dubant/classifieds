@@ -12,15 +12,28 @@ dynForm = {
 	    		$("#ajax-modal .modal-header").removeClass("bg-dark bg-purple bg-red bg-azure bg-green bg-green-poi bg-orange bg-yellow bg-blue bg-turq bg-url")
 							  					  .addClass("bg-azure");
 	    		
-	    		if(data && data.section && data.type && data.subtype ){
+	    		if(data && data.section && data.type ){
 	    			$("#ajaxFormModal #id").val(data.id);
-	    			$(".breadcrumbcustom").html( "<h4><a href='javascript:;'' class='btn btn-xs btn-danger'  onclick='dyFObj.elementObj.dynForm.jsonSchema.actions.clear()'><i class='fa fa-times'></i></a> "+tradCategory[data.section]+" > "+tradCategory[data.type]+" > "+tradCategory[data.subtype]+"</h4>" );
+	    			var breadCrumbTxt = "<a href='javascript:;'' class='btn btn-xs btn-danger'  onclick='dyFObj.elementObj.dynForm.jsonSchema.actions.clear()'><i class='fa fa-times'></i></a> "+tradCategory[data.section]+" > "+tradCategory[data.type];
+	    			if(data.subtype ) 
+	    				breadCrumbTxt = breadCrumbTxt+" > "+tradCategory[data.subtype]; 
+	    			$(".breadcrumbcustom").html( "<h4>"+breadCrumbTxt+"</h4>" );
 					$(".sectionBtntagList").hide();
 					$(".typeBtntagList").hide();
 	    		} else
 	    			$(".typeBtntagList, .nametext, .descriptiontextarea, .pricetext, .contactInfotext, .locationlocation, .imageuploader, .formshowerscustom, .tagstags, #btn-submit-form, .deviseselect").hide();
 	    	
 	    		$("#devise").val(deviseDefault);
+
+	    		contextDataId = userId;
+	    		contextDataType = "citoyens";
+	    		if(contextData != null && contextData.type && contextData.id )
+	    		{
+    				contextDataId = contextData.id;
+	    			contextDataType = contextData.type;
+	    		} 
+	    		$('#ajaxFormModal #parentId').val(contextDataId);
+	    		$("#ajaxFormModal #parentType").val( contextDataType ); 
 	    	},
 	    	/*,
 	    	loadData : function(data){

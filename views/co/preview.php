@@ -101,7 +101,7 @@
 					<i class="fa fa-times"></i>
 			</button>
 			
-			<?php if( $element["creator"] == Yii::app()->session["userId"] || Authorisation::canEditItem( Yii::app()->session["userId"], "poi", $id, $element["parentType"], $element["parentId"] ) ){?>
+			<?php if( $element["creator"] == Yii::app()->session["userId"] || Authorisation::canEditItem( Yii::app()->session["userId"], "poi", $id, @$element["parentType"], @$element["parentId"] ) ){?>
 			
 			<button class="btn btn-default pull-right text-red deleteThisBtn" data-type="classified" data-id="<?php echo $id ?>" style="margin-top:-15px;">
 				<i class=" fa fa-trash"></i>
