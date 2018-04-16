@@ -104,82 +104,9 @@
 
 <div class="col-md-12 col-sm-12 col-xs-12 bg-white no-padding shadow pageContent" 
      id="content-social" style="min-height:700px;">
-    <?php if(@$type=="events"){ ?>
-    <div class="col-md-12 no-padding calendar"></div>
-    <div class="responsive-calendar-init hidden"> 
-      <div class="responsive-calendar light col-md-12 no-padding">   
-          <div class="day-headers">
-            <div class="day header"><?php echo Yii::t("translate","Mon") ?></div>
-            <div class="day header"><?php echo Yii::t("translate","Tue") ?></div>
-            <div class="day header"><?php echo Yii::t("translate","Wed") ?></div>
-            <div class="day header"><?php echo Yii::t("translate","Thu") ?></div>
-            <div class="day header"><?php echo Yii::t("translate","Fri") ?></div>
-            <div class="day header"><?php echo Yii::t("translate","Sat") ?></div>
-            <div class="day header"><?php echo Yii::t("translate","Sun") ?></div>
-          </div>
-          <div class="days" data-group="days"></div>   
-          <div class="controls">
-              <a id="btn-month-before" class="text-white" data-go="prev"><div class="btn"><i class="fa fa-arrow-left"></i></div></a>
-              <h4 class="text-white"><span data-head-month></span> <span data-head-year></span></h4>
-              <a id="btn-month-next" class="text-white" data-go="next"><div class="btn"><i class="fa fa-arrow-right"></i></div></a>
-          </div>
-      </div>
-    </div>
-    <?php } ?>
-
-    <?php if(@$type!="cities" && Yii::app()->params["CO2DomainName"] != "terla"){ ?>
-        <!--<div class="col-md-2 col-sm-2 col-xs-12 no-padding">
-            <?php if(@$type=="all"){ ?>
-            <button class="btn btn-default letter-<?php echo @$params["pages"]["#".$page]["colorBtnCreate"]; ?> hidden-xs btn-menu-left-add pull-right margin-top-25 main-btn-create tooltips"
-                    data-target="#dash-create-modal" data-toggle="modal"
-                    data-toggle="tooltip" data-placement="top" 
-                    title="<?php echo Yii::t("common", @$params["pages"]["#".$page]["lblBtnCreate"]); ?>">
-                <i class="fa fa-plus-circle"></i> <?php echo Yii::t("common",@$params["pages"]["#".$page]["lblBtnCreate"]); ?>
-            </button>
-            <?php }else{ ?>
-            <button class="btn btn-default letter-<?php echo @$params["pages"]["#".$page]["colorBtnCreate"]; ?> hidden-xs btn-menu-left-add pull-right margin-top-25 main-btn-create tooltips" data-type="<?php echo @$type; ?>"
-                    data-toggle="tooltip" data-placement="top" 
-                    title="<?php echo Yii::t("common", @$params["pages"]["#".$page]["lblBtnCreate"]); ?>">
-                <i class="fa fa-plus-circle"></i> <?php echo Yii::t("common",@$params["pages"]["#".$page]["lblBtnCreate"]); ?>
-            </button>
-            <?php } ?>
-
-        </div>-->
-
-        <?php //var_dump(Yii::app()->request->cookies['communexionActivated']);
-              //var_dump(CO2::getCommunexionCookies()); 
-        ?>
-        <?php if(Yii::app()->params["CO2DomainName"] != "terla"){ ?> 
-        <!--<div id="container-scope-filter"  class="col-md-10 col-sm-10 col-xs-12 padding-5">
-            <?php $this->renderPartial($layoutPath.'breadcrum_communexion', array("type"=>@$type)); ?>
-        </div>-->
-        <?php } ?>
-    <?php } ?>
-
-
+   
 	<div class="col-md-12 col-sm-12 col-xs-12 no-padding" id="page"></div>
 
-    <?php if(@$app && $app !="search" && !empty(Yii::app()->session["userId"]) && Yii::app()->params["CO2DomainName"] != "terla" ){ ?>
-    <!--<div class="col-md-12 col-sm-12 col-xs-12 padding-5 text-center">
-        /*** <hr style="margin-bottom:-20px;"> ***/
-        <button class="btn btn-default btn-circle-1 btn-create-page bg-green-k text-white tooltips" 
-            data-target="#dash-create-modal" data-toggle="modal"
-            data-toggle="tooltip" data-placement="top" 
-            title="<?php echo Yii::t("common","Create a new page") ?>">
-                <i class="fa fa-times" style="font-size:18px;"></i>
-        </button>
-        <h5 class="text-center letter-green margin-top-25"><?php echo Yii::t("common","Create a page") ?></h5>
-        <h5 class="text-center">
-            <small>             
-                <span class="text-green"><?php echo Yii::t("common","NGOs") ?></span> 
-                <span class="text-azure"><?php echo Yii::t("common","Local Business") ?></span> 
-                <span class="text-purple"><?php echo Yii::t("common","Projects") ?></span> 
-                <span class="text-turq"><?php echo Yii::t("common","Groups") ?></span>
-                <span class="text-red"><?php echo Yii::t("common","Government Organization") ?></span>
-            </small>
-        </h5><br>
-    </div>-->
-    <?php } ?>
 </div>
 
 <?php $this->renderPartial($layoutPath.'modals.'.Yii::app()->params["CO2DomainName"].'.pageCreate', array()); ?>
