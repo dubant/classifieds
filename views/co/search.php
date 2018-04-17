@@ -17,6 +17,8 @@
     );
     HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule, $this->module->getParentAssetsUrl());
 
+    
+
 
     $layoutPath = 'webroot.themes.'.Yii::app()->theme->name.'.views.layouts.';
 
