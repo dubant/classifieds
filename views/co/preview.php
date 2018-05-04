@@ -139,7 +139,7 @@
 			</div>
 
 				<?php 
-				$images=Document::getListDocumentsWhere(array("id"=>(string)$element["_id"],"type"=>"classifieds","doctype"=>Document::DOC_TYPE_IMAGE),Document::DOC_TYPE_IMAGE);
+				$images=Document::getListDocumentsWhere(array("id"=>(string)$element["_id"],"type"=>"classified","doctype"=>Document::DOC_TYPE_IMAGE),Document::DOC_TYPE_IMAGE);
 					$this->renderPartial('../pod/sliderMedia', 
 								array(
 									  "medias"=>@$element["medias"],
