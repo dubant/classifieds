@@ -20,6 +20,12 @@ dynForm = {
 	    			$(".breadcrumbcustom").html( "<h4>"+breadCrumbTxt+"</h4>" );
 					$(".sectionBtntagList").hide();
 					$(".typeBtntagList").hide();
+					classifiedTags = $("#ajaxFormModal #tags").val().split(",");
+					$.each([$("#ajaxFormModal #section").val(), $("#ajaxFormModal #type").val(), $("#ajaxFormModal #subtype").val()], function(e,v){
+						index = classifiedTags.indexOf(v);
+						if (index !== -1) classifiedTags.splice(index, 1);
+					});
+					$(".tagstags").find(".select2TagsInput").select2("val", classifiedTags).trigger("change");
 	    		} else
 	    			$(".typeBtntagList, .nametext, .descriptiontextarea, .pricetext, .contactInfotext, .locationlocation, .imageuploader, .formshowerscustom, .tagstags, #btn-submit-form, .deviseselect").hide();
 	    	
