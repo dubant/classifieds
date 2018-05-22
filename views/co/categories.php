@@ -71,7 +71,7 @@
           $devises = $params["devises"]; ?>
           <?php if(@$devises){ 
             foreach($devises as $key => $devise){ ?>
-            <option class="bold" value="<?php echo $key; ?>"><?php echo $devise; ?></option>
+            <option class="bold" value="<?php echo $key; ?>"><?php echo Yii::t("common",$devise); ?></option>
           <?php } } ?>
         </select>
       </div>
